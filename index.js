@@ -1,9 +1,12 @@
+
 const  express=require('express')
 const  path=require('path')
 const hbs=require('hbs')
 const app=express()
-const  port=process.env.PORT|| 8080;
+const  PORT=process.env.PORT|| 8080;
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 
 app.set('views',path.join(__dirname))
@@ -27,7 +30,7 @@ app.get('/',function(req,res){
                 res.render('error.hbs')
                 })
 
-app.listen(port,function(error){
+app.listen(PORT,function(error){
     if(error)throw error
     console.log("server Created  Succesfully")
 })
