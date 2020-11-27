@@ -230,7 +230,7 @@
           <p id="city_name">Get the output here</p>
           <div class="middle_layer data_hide">
             <p id="temp"></p>
-            <p id="temp_status "><sup></sup><span>K</span><i class="fa fa-cloud " aris-hidden="true"></i></p>
+            <p id="temp_status "><sup>O</sup><span>C</span><i class="fa fa-cloud " aris-hidden="true"></i></p>
           </div>
 
         </div>
@@ -245,13 +245,13 @@
 
   <script>
     const cityname = document.getElementById('cityname');
-
+       
     const submitbt = document.getElementById('submitbtn');
     const city_name = document.getElementById('city_name');
     const temperature = document.getElementById('temp');
     const humidity = document.getElementById('humidity')
     const getInfo = (event) => {
-
+  
       event.preventDefault();
       let cityVal = cityname.value;
       if (cityVal !== "") {
@@ -269,7 +269,8 @@
           fetch(url)
             .then(response => response.json())
             .then(data => {
-              temperature.innerText = data.main.temp;
+            
+              temperature.innerText =Math.round( data.main.temp-273.15);
               humidity.innerText = data.main.humidity;
             });
 
